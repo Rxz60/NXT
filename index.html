@@ -109,7 +109,6 @@
             100% { transform: translateY(-105vh) scale(1.2); opacity: 0; }
         }
 
-        /* 3D Dynamic Flip Main Wrapper */
         .main-content-wrapper { 
             position: relative; z-index: 10; opacity: 0; transform-style: preserve-3d;
             transform: translateY(180px) rotateX(-90deg) scale(0.8);
@@ -177,7 +176,7 @@
         .menu-box-img {
             width: 80px; height: 80px; border-radius: 14px; object-fit: cover;
             border: 2px solid var(--main-blue); box-shadow: 0 0 20px var(--blue-glow);
-            filter: drop-shadow(0 0 10px #00d2ff);
+            filter: drop-shadow(0 0 10px #00d2ff); background: #001233;
         }
 
         .sub-page { display: none; background: transparent; border: none; padding: 5px; animation: fadeEffect 0.3s ease forwards; }
@@ -311,7 +310,7 @@
 
 <div id="mainContentWrapper" class="main-content-wrapper">
 
-    <div class="top-left-menu-btn" onclick="document.getElementById('side-drawer').classList.toggle('open')">
+    <div class="top-left-menu-btn" onclick="playClickSound(); document.getElementById('side-drawer').classList.toggle('open')">
         <div class="menu-bars-icon">
             <span></span>
             <span></span>
@@ -330,25 +329,28 @@
 
     <div class="container">
         
+        <!-- القائمة الرئيسية -->
         <div id="main-menu-page" class="main-menu-grid">
-            <div class="menu-box-trigger" onclick="document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-ios').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
+            <div class="menu-box-trigger" onclick="playClickSound(); document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-ios').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
                 <h2>هاكات ايفون + iOS</h2>
                 <img src="https://raw.githubusercontent.com/Rxz60/NXT/refs/heads/main/IMG_4648.png" class="menu-box-img">
             </div>
-            <div class="menu-box-trigger" onclick="document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-android').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
+            <div class="menu-box-trigger" onclick="playClickSound(); document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-android').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
                 <h2>هاكات أندرويد + Android</h2>
                 <img src="https://github.com/Rxz60/NXT/raw/refs/heads/main/IMG_4647.png" class="menu-box-img">
             </div>
-            <div class="menu-box-trigger" onclick="document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-pc').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
+            <div class="menu-box-trigger" onclick="playClickSound(); document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-pc').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">
                 <h2>هاكات بي سي + PC</h2>
                 <img src="https://github.com/Rxz60/NXT/raw/refs/heads/main/IMG_4644.png" class="menu-box-img">
             </div>
         </div>
 
+        <!-- قسم آيفون كامل مع كافة الهاكات القديمة -->
         <div id="page-ios" class="sub-page">
-            <button class="back-btn" onclick="Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
+            <button class="back-btn" onclick="playClickSound(); Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
             <div class="section-title-blue">قائمة الايفون (iOS)</div>
             <div class="cards-grid">
+                <!-- Delta -->
                 <div class="hack-card">
                     <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="dancing-hack-img">
                     <h3>Delta</h3>
@@ -363,13 +365,48 @@
                         </a>
                     </div>
                 </div>
+                <!-- Cryptic -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3962.png" class="dancing-hack-img">
+                    <h3>Cryptic</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fraw.githubusercontent.com%2Fhatm12345cc-source%2FVN7%2Frefs%2Fheads%2Fmain%2Fcryptic.plist')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Cryptic</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Appleware -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3963.png" class="dancing-hack-img">
+                    <h3>Appleware</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fappleware.dev%2Fplist%2Fappleware.plist')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Appleware</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cubix -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3964.png" class="dancing-hack-img">
+                    <h3>Cubix</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fraw.githubusercontent.com%2Fhatm12345cc-source%2FVN7%2Frefs%2Fheads%2Fmain%2Fcubix.plist')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Cubix</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- قسم أندرويد كامل مع كافة الهاكات القديمة -->
         <div id="page-android" class="sub-page">
-            <button class="back-btn" onclick="Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
+            <button class="back-btn" onclick="playClickSound(); Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
             <div class="section-title-blue">قائمة الاندرويد (Android)</div>
             <div class="cards-grid">
+                <!-- Delta -->
                 <div class="hack-card">
                     <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="dancing-hack-img">
                     <h3>Delta</h3>
@@ -384,13 +421,48 @@
                         </a>
                     </div>
                 </div>
+                <!-- Hydrogen -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3965.png" class="dancing-hack-img">
+                    <h3>Hydrogen</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/99m289s030119t1/Hydrogen.apk/file')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Hydrogen</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Codex -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3966.png" class="dancing-hack-img">
+                    <h3>Codex</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/857w2i7x122a611/Codex.apk/file')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Codex</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Fluxus -->
+                <div class="hack-card">
+                    <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/IMG_3967.png" class="dancing-hack-img">
+                    <h3>Fluxus</h3>
+                    <div class="btn-group">
+                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/v9u1c9x8s241x11/Fluxus.apk/file')" class="dl-link">
+                            <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
+                            <span>Install Fluxus</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- قسم البي سي كامل -->
         <div id="page-pc" class="sub-page">
-            <button class="back-btn" onclick="Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
+            <button class="back-btn" onclick="playClickSound(); Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex';">← رجوع</button>
             <div class="section-title-blue">قائمة البي سي (PC)</div>
             <div class="cards-grid">
+                <!-- Velocity -->
                 <div class="hack-card">
                     <img src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2612.jpeg" class="dancing-hack-img">
                     <h3>Velocity</h3>
@@ -405,7 +477,7 @@
         </div>
 
         <div class="footer-discord-wrapper">
-            <a href="https://discord.gg/aJuR2Rcny" target="_blank" class="discord-footer-btn">
+            <a href="https://discord.gg/aJuR2Rcny" target="_blank" class="discord-footer-btn" onclick="playClickSound()">
                 <svg class="discord-icon-img" viewBox="0 0 127.14 96.36" fill="#00d2ff">
                     <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74C48.8,40.21,53.9,45.92,53.8,53,53.8,60,48.74,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74C91,40.21,96.13,45.92,96,53,96,60,90.95,65.69,84.69,65.69Z"/>
                 </svg>
@@ -418,9 +490,9 @@
 
 <div id="side-drawer" class="side-drawer-overlay" onclick="if(event.target.id==='side-drawer') this.classList.remove('open');">
     <div class="side-drawer-container">
-        <button class="drawer-close-btn" onclick="document.getElementById('side-drawer').classList.remove('open')">✕</button>
-        <div class="drawer-item" onclick="Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex'; document.getElementById('side-drawer').classList.remove('open');">الصفحة الرئيسية</div>
-        <a href="https://discord.gg/aJuR2Rcny" target="_blank" class="drawer-item">ديسكورد NXT</a>
+        <button class="drawer-close-btn" onclick="playClickSound(); document.getElementById('side-drawer').classList.remove('open')">✕</button>
+        <div class="drawer-item" onclick="playClickSound(); Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('main-menu-page').style.display='flex'; document.getElementById('side-drawer').classList.remove('open');">الصفحة الرئيسية</div>
+        <a href="https://discord.gg/aJuR2Rcny" target="_blank" class="drawer-item" onclick="playClickSound()">ديسكورد NXT</a>
     </div>
 </div>
 
@@ -431,7 +503,7 @@
         <div id="progressFill" class="progress-bar-fill"></div>
     </div>
     <div id="percentText" class="percentage-text">0%</div>
-    <button class="skip-btn" onclick="skipDownloadCounter()">تخطي عداد التحميل</button>
+    <button class="skip-btn" onclick="playClickSound(); skipDownloadCounter()">تخطي عداد التحميل</button>
 </div>
 
 <div id="successToast" class="success-toast">تم تثبيت التطبيق بنجاح</div>
@@ -445,27 +517,57 @@
         if (audioCtx.state === 'suspended') audioCtx.resume();
     }
 
-    // تشغيل صوت فوري ومباشر 0 مليمتر تأخير
-    function playInstantActionSound() {
+    // صوت النيون المحسن للدخول القوي والتحميل
+    function playEpicEnterSound() {
         initAudioContext();
         const now = audioCtx.currentTime;
         
+        // النغمة الأولى العالية
+        const osc1 = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc1.type = 'sawtooth';
+        osc1.frequency.setValueAtTime(440, now);
+        osc1.frequency.exponentialRampToValueAtTime(880, now + 0.3);
+        gain1.gain.setValueAtTime(0.3, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc1.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.35);
+
+        // صدى عميق وخرافي فوري
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(220, now + 0.05);
+        osc2.frequency.exponentialRampToValueAtTime(110, now + 0.4);
+        gain2.gain.setValueAtTime(0.5, now + 0.05);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        osc2.start(now + 0.05);
+        osc2.stop(now + 0.45);
+    }
+
+    // صوت نقرة نيون سريع ورهيب للأزرار والتنقل
+    function playClickSound() {
+        initAudioContext();
+        const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(1200, now);
-        osc.frequency.exponentialRampToValueAtTime(400, now + 0.12);
-        gain.gain.setValueAtTime(0.4, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(900, now);
+        osc.frequency.exponentialRampToValueAtTime(1400, now + 0.08);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(now);
-        osc.stop(now + 0.12);
+        osc.stop(now + 0.08);
     }
 
     function enterSiteProcess() {
-        playInstantActionSound();
+        playEpicEnterSound(); // تشغيل الصوت الفخم عند البدء مباشرة
         const splash = document.getElementById('splashScreen');
         const skipBtn = document.getElementById('skipSplashBtn');
         const mainWrapper = document.getElementById('mainContentWrapper');
@@ -483,7 +585,7 @@
 
     function startDownloadProcess(event, targetUrl) {
         event.preventDefault();
-        playInstantActionSound(); // الصوت ينطلق فوراً في نفس اللحظة بدون تأخير
+        playEpicEnterSound(); // الصوت النيون الفاخر المطور عند التحميل
         currentTargetUrl = targetUrl;
 
         const overlay = document.getElementById('loadingOverlay');
