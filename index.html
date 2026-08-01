@@ -122,7 +122,6 @@
             100% { transform: translateY(-105vh) scale(1.2); opacity: 0; }
         }
 
-
         .main-content-wrapper { 
             position: relative; z-index: 10; opacity: 0; transform-style: preserve-3d;
             transform: translateY(180px) rotateX(-90deg) scale(0.8);
@@ -450,11 +449,12 @@
             box-shadow: 0 0 25px var(--main-blue); 
         }
 
-       
+        /* Full Screen Loading Overlay */
         .loading-screen-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle, #001845 0%, #01091b 100%); z-index: 9999999;
+            background: radial-gradient(circle, #001845 0%, #01091b 100%); 
+            z-index: 9999999;
             display: none; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 20px;
         }
@@ -489,15 +489,6 @@
         }
 
         .skip-btn:hover { background: #00d2ff; color: #000000; box-shadow: 0 0 35px #00d2ff; transform: scale(1.05); }
-
-        .success-toast {
-            position: fixed; top: 30px; left: 50%; transform: translateX(-50%) translateY(-100px);
-            background: #00d2ff; color: #000000; padding: 14px 28px; border-radius: 12px;
-            font-weight: 900; font-size: 18px; box-shadow: 0 0 35px #00d2ff; z-index: 10000000;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1); pointer-events: none;
-        }
-
-        .success-toast.show { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body onclick="initAudioContext()">
@@ -727,8 +718,6 @@
     </div>
 </div>
 
-<div id="successToast" class="success-toast">تم تجهيز الرابط بنجاح</div>
-
 <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('dragstart', e => e.preventDefault());
@@ -739,7 +728,6 @@
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
     }
-
 
     function playInstantActionSound() {
         initAudioContext();
@@ -827,20 +815,15 @@
     }
 
     function finishDownload() {
-        setTimeout(() => {
-            document.getElementById('loadingOverlay').style.display = 'none';
-            const toast = document.getElementById('successToast');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-            
-            if (currentTargetUrl) {
-                if (currentTargetUrl.startsWith('itms-services://')) {
-                    window.location.href = currentTargetUrl;
-                } else {
-                    window.open(currentTargetUrl, '_blank');
-                }
+        document.getElementById('loadingOverlay').style.display = 'none';
+        
+        if (currentTargetUrl) {
+            if (currentTargetUrl.startsWith('itms-services://')) {
+                window.location.href = currentTargetUrl;
+            } else {
+                window.open(currentTargetUrl, '_blank');
             }
-        }, 200);
+        }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
