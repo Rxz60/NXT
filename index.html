@@ -37,7 +37,7 @@
             perspective: 2000px;
         }
 
-        /* Splash Screen */
+        
         .splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -448,47 +448,6 @@
             color: #ffffff; 
             box-shadow: 0 0 25px var(--main-blue); 
         }
-
-        /* Full Screen Loading Overlay */
-        .loading-screen-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle, #001845 0%, #01091b 100%); 
-            z-index: 9999999;
-            display: none; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 20px;
-        }
-
-        .loading-logo-square {
-            width: 130px; height: 130px; border-radius: 20px; border: 3px solid #00d2ff;
-            box-shadow: 0 0 45px #00d2ff; margin-bottom: 25px; object-fit: cover;
-        }
-
-        .loading-title { font-size: 32px; font-weight: 900; color: #ffffff; text-shadow: 0 0 25px #00d2ff; margin-bottom: 15px; }
-
-        .progress-bar-container {
-            width: 85%; max-width: 400px; height: 16px; background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px; border: 1.5px solid #00d2ff; overflow: hidden; box-shadow: 0 0 25px #00d2ff;
-            margin-top: 15px;
-        }
-
-        .progress-bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #0055ff, #00d2ff); box-shadow: 0 0 15px #00d2ff; transition: width 0.1s linear; }
-        .percentage-text { font-size: 22px; font-weight: 800; color: #00d2ff; margin-top: 15px; text-shadow: 0 0 15px #00d2ff; }
-
-        .loading-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .skip-btn {
-            padding: 12px 28px; background: rgba(0, 210, 255, 0.1); border: 2px solid #00d2ff;
-            color: #ffffff; border-radius: 14px; font-weight: 900; font-size: 16px; cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); transition: 0.2s ease;
-        }
-
-        .skip-btn:hover { background: #00d2ff; color: #000000; box-shadow: 0 0 35px #00d2ff; transform: scale(1.05); }
     </style>
 </head>
 <body onclick="initAudioContext()">
@@ -548,11 +507,11 @@
                     <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="dancing-hack-img">
                     <h3>Delta</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist')" class="dl-link">
+                        <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Delta</span>
                         </a>
-                        <a onclick="startDownloadProcess(event, 'https://nekoo.eu.org/mnzdiQ')" class="dl-link">
+                        <a href="https://nekoo.eu.org/mnzdiQ" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Delta VN</span>
                         </a>
@@ -569,11 +528,11 @@
                     <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="dancing-hack-img">
                     <h3>Delta</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/nsyedn6qmsv4pqi/Delta-2.729.840.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/nsyedn6qmsv4pqi/Delta-2.729.840.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Delta</span>
                         </a>
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/5pvz0fjuaudojmd/Delta+VN+New.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/5pvz0fjuaudojmd/Delta+VN+New.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Delta VN</span>
                         </a>
@@ -583,11 +542,11 @@
                     <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2577.jpeg" class="dancing-hack-img">
                     <h3>Arceus X</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/dlypi7n7b8azy74/Roblox.Arceus.X.NEO.2.2.7.apk.download/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/dlypi7n7b8azy74/Roblox.Arceus.X.NEO.2.2.7.apk.download/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Arceus Neo</span>
                         </a>
-                        <a onclick="startDownloadProcess(event, 'https://vng.spdmteam.com/')" class="dl-link">
+                        <a href="https://vng.spdmteam.com/" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Arceus VN</span>
                         </a>
@@ -597,11 +556,11 @@
                     <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2609.jpeg" class="dancing-hack-img">
                     <h3>PunkX</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/4cz0juuzjfyqqm4/PunkX_64Bits.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/4cz0juuzjfyqqm4/PunkX_64Bits.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install PunkX Original</span>
                         </a>
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/tafzvqylpjzp4go/PunkX_VNG_64Bits.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/tafzvqylpjzp4go/PunkX_VNG_64Bits.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install PunkX VNG</span>
                         </a>
@@ -611,11 +570,11 @@
                     <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2580.jpeg" class="dancing-hack-img">
                     <h3>Codex</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/9qz50mqeizkgkww/Codex+v2.729.840.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/9qz50mqeizkgkww/Codex+v2.729.840.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Codex Global</span>
                         </a>
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/5p08n8qhtsv4x3s/Codex+VNG+V2.715+No+Key.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/5p08n8qhtsv4x3s/Codex+VNG+V2.715+No+Key.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Codex VN</span>
                         </a>
@@ -625,7 +584,7 @@
                     <img src="https://github.com/Rxz60/TRX5/raw/refs/heads/main/4865B4C0-8AD9-44E7-AEF1-93DFA9FFE555.png" class="dancing-hack-img">
                     <h3>VegaX</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://github.com/1f0yt/community/releases/download/Vegax/Vega.X.apk')" class="dl-link">
+                        <a href="https://github.com/1f0yt/community/releases/download/Vegax/Vega.X.apk" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install VegaX</span>
                         </a>
@@ -635,7 +594,7 @@
                     <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png" class="dancing-hack-img">
                     <h3>Trigon</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/1p5mhe2y2hh97z1/2.726.1142_trigon.apk/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/1p5mhe2y2hh97z1/2.726.1142_trigon.apk/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Trigon</span>
                         </a>
@@ -652,7 +611,7 @@
                     <img src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2612.jpeg" class="dancing-hack-img">
                     <h3>Velocity</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://gofile.io/d/biQGwp')" class="dl-link">
+                        <a href="https://gofile.io/d/biQGwp" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Velocity</span>
                         </a>
@@ -662,7 +621,7 @@
                     <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png" class="dancing-hack-img">
                     <h3>Trigon</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/jwmwp9xhriyqkql/Trigon_Evo_0.2.6.exe/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/jwmwp9xhriyqkql/Trigon_Evo_0.2.6.exe/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Trigon PC</span>
                         </a>
@@ -672,7 +631,7 @@
                     <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/8EDAC7FF-974A-4351-8F15-8C2592B06CF4.png" class="dancing-hack-img">
                     <h3>Xeno</h3>
                     <div class="btn-group">
-                        <a onclick="startDownloadProcess(event, 'https://www.mediafire.com/file/e2kjxf028x107uk/Xeno-v1.3.55.exe/file')" class="dl-link">
+                        <a href="https://www.mediafire.com/file/e2kjxf028x107uk/Xeno-v1.3.55.exe/file" target="_blank" class="dl-link">
                             <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/E2243673-FA58-4262-9E00-888C5620C64B.png" class="dl-icon-img">
                             <span>Install Xeno</span>
                         </a>
@@ -702,19 +661,6 @@
         <div class="drawer-item" onclick="playInstantActionSound(); document.getElementById('side-drawer').classList.remove('open'); document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-android').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">قائمة الاندرويد (Android)</div>
         <div class="drawer-item" onclick="playInstantActionSound(); document.getElementById('side-drawer').classList.remove('open'); document.getElementById('main-menu-page').style.display='none'; Array.from(document.getElementsByClassName('sub-page')).forEach(p=>p.style.display='none'); document.getElementById('page-pc').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});">قائمة البي سي (PC)</div>
         <a href="https://discord.gg/aJuR2Rcny" target="_blank" onclick="playInstantActionSound();" class="drawer-item">ديسكورد NXT</a>
-    </div>
-</div>
-
-<div id="loadingOverlay" class="loading-screen-overlay">
-    <img src="https://github.com/Rxz60/MRX/raw/refs/heads/main/IMG_4642.jpeg" class="loading-logo-square">
-    <div class="loading-title">جاري تحضير رابط التحميل...</div>
-    <div class="progress-bar-container">
-        <div id="progressFill" class="progress-bar-fill"></div>
-    </div>
-    <div id="percentText" class="percentage-text">0%</div>
-    
-    <div class="loading-controls">
-        <button class="skip-btn" onclick="skipDownloadCounter()">تخطي التحميل الان 🚀</button>
     </div>
 </div>
 
@@ -774,57 +720,6 @@
         setTimeout(() => {
             mainWrapper.classList.add('enter-active');
         }, 100);
-    }
-
-    let downloadInterval = null;
-    let currentTargetUrl = '';
-
-    function startDownloadProcess(event, targetUrl) {
-        event.preventDefault();
-        playInstantActionSound();
-        currentTargetUrl = targetUrl;
-
-        const overlay = document.getElementById('loadingOverlay');
-        const fill = document.getElementById('progressFill');
-        const percent = document.getElementById('percentText');
-
-        overlay.style.display = 'flex';
-        fill.style.width = '0%';
-        percent.innerText = '0%';
-
-        let progress = 0;
-        clearInterval(downloadInterval);
-        downloadInterval = setInterval(() => {
-            progress += Math.floor(Math.random() * 8) + 6;
-            if (progress >= 100) {
-                progress = 100;
-                fill.style.width = '100%';
-                percent.innerText = '100%';
-                clearInterval(downloadInterval);
-                finishDownload(); // فتح فوري لحظة الوصول لـ 100%
-            } else {
-                fill.style.width = progress + '%';
-                percent.innerText = progress + '%';
-            }
-        }, 80);
-    }
-
-    function skipDownloadCounter() {
-        playInstantActionSound();
-        clearInterval(downloadInterval);
-        finishDownload(); // فتح فوري بدون أي تأخير عند الضغط
-    }
-
-    function finishDownload() {
-        document.getElementById('loadingOverlay').style.display = 'none';
-        
-        if (currentTargetUrl) {
-            if (currentTargetUrl.startsWith('itms-services://')) {
-                window.location.href = currentTargetUrl;
-            } else {
-                window.open(currentTargetUrl, '_blank');
-            }
-        }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
