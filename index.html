@@ -449,7 +449,7 @@
             box-shadow: 0 0 25px var(--main-blue); 
         }
 
-        /* Full Screen Loading Overlay */
+        /* Full Screen Loading Overlay (تغطية كاملة للشاشة) */
         .loading-screen-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -799,7 +799,7 @@
             if (progress >= 100) {
                 progress = 100;
                 clearInterval(downloadInterval);
-                finishDownload();
+                finishDownload(); // فتح فوري بمجرد اكتمال 100%
             }
             fill.style.width = progress + '%';
             percent.innerText = progress + '%';
@@ -809,9 +809,7 @@
     function skipDownloadCounter() {
         playInstantActionSound();
         clearInterval(downloadInterval);
-        document.getElementById('progressFill').style.width = '100%';
-        document.getElementById('percentText').innerText = '100%';
-        finishDownload();
+        finishDownload(); // فتح فوري دون أي انتظار عند التخطي
     }
 
     function finishDownload() {
