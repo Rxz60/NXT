@@ -3,20 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
 <link rel="icon" type="image/png" href="https://files.catbox.moe/z10byb.jpg">
-<title>MRX HUB — ULTRA PLATFORM</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<title>Amc - Hacks</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
 <style>
 :root {
-    --bg-black: #030305;
-    --card-bg: rgba(14, 15, 18, 0.85);
-    --glow-white: rgba(255, 255, 255, 0.95);
-    --glow-soft: rgba(255, 255, 255, 0.15);
-    --border-silver: rgba(255, 255, 255, 0.22);
-    --border-silver-strong: rgba(255, 255, 255, 0.65);
-    --text-white: #ffffff;
-    --text-silver: #c4c4c8;
-    --text-dark: #7d7d85;
+    --primary-rgb: 255,255,255;
 }
 
 * {
@@ -26,724 +22,834 @@
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
-    outline: none !important;
     text-decoration: none !important;
+    outline: none !important;
+    border: none;
 }
 
 html {
     scroll-behavior: smooth;
-    background: #020203;
+    background: #000;
 }
 
 body {
-    min-height: 100vh;
-    background: #030305;
-    color: var(--text-white);
+    background: #000;
+    color: #fff;
     font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-    padding: 30px 15px;
+    padding: 30px 20px;
 }
 
-.bg-grid {
+/* الخلفية */
+.grid-bg {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+    animation: gridShift 15s linear infinite;
+}
+
+@keyframes gridShift {
+    0% { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(50px,50px,0); }
+}
+
+/* الأيقونات */
+.floating-icons-layer {
     position: fixed;
     inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.25;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-.bg-glow-orb {
-    position: fixed;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
     pointer-events: none;
     z-index: 0;
-    animation: orbPulse 8s ease-in-out infinite alternate;
+    overflow: hidden;
 }
 
-@keyframes orbPulse {
-    0% { transform: translateX(-50%) scale(0.9); opacity: 0.5; }
-    100% { transform: translateX(-50%) scale(1.15); opacity: 0.9; }
+.floating-icon {
+    position: absolute;
+    color: rgba(255,255,255,.05);
 }
 
-.menu-toggle-btn {
+.floating-icon:nth-child(1) { animation: float1 7s infinite alternate ease-in-out; }
+.floating-icon:nth-child(2) { animation: float2 6s infinite alternate ease-in-out -1.5s; }
+.floating-icon:nth-child(3) { animation: float3 8s infinite alternate ease-in-out -3s; }
+.floating-icon:nth-child(4) { animation: float1 6.5s infinite alternate ease-in-out -1s; }
+.floating-icon:nth-child(5) { animation: float2 7.5s infinite alternate ease-in-out -2.5s; }
+.floating-icon:nth-child(6) { animation: float3 5.5s infinite alternate ease-in-out -4s; }
+
+@keyframes float1 {
+    0% { transform: translate3d(0,0,0) rotate(0); }
+    100% { transform: translate3d(35px,45px,0) rotate(20deg); }
+}
+
+@keyframes float2 {
+    0% { transform: translate3d(0,0,0) rotate(0); }
+    100% { transform: translate3d(-40px,30px,0) rotate(-15deg); }
+}
+
+@keyframes float3 {
+    0% { transform: translate3d(0,0,0) rotate(0); }
+    100% { transform: translate3d(25px,-35px,0) rotate(25deg); }
+}
+
+/* زر القائمة */
+.menu-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    border-radius: 16px;
-    background: rgba(18, 18, 22, 0.75);
-    border: 1px solid var(--border-silver);
-    backdrop-filter: blur(25px);
+    z-index: 998;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(10,10,10,.85);
+    border: 1px solid rgba(255,255,255,.2);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.2);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.menu-toggle-btn:hover {
-    border-color: var(--border-silver-strong);
-    box-shadow: 0 0 25px rgba(255,255,255,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
-    transform: translateY(-2px);
+.menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: rgba(255,255,255,.8);
+    position: relative;
 }
 
-.hamburger-lines {
-    width: 22px;
-    height: 16px;
+.menu-toggle span::before,
+.menu-toggle span::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: rgba(255,255,255,.8);
+}
+
+.menu-toggle span::before { top: -6px; }
+.menu-toggle span::after { top: 6px; }
+
+/* القائمة */
+.side-menu {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 240px;
+    height: calc(100vh - 30px);
+    background: rgba(5,5,5,.94);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 24px;
+    z-index: 1000;
+    transform: translate3d(280px,0,0);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 24px;
 }
 
-.hamburger-lines span {
-    display: block;
-    width: 100%;
-    height: 2.5px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(255,255,255,0.6);
+.side-menu.open {
+    transform: translate3d(0,0,0);
 }
 
-.sidebar-overlay {
+.side-menu-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.82);
-    backdrop-filter: blur(8px);
-    z-index: 1050;
+    background: rgba(0,0,0,.55);
+    z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity .4s ease;
 }
 
-.sidebar-overlay.active {
+.side-menu-overlay.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 290px;
-    height: 100vh;
-    background: linear-gradient(160deg, rgba(16, 17, 22, 0.98), rgba(6, 6, 8, 0.99));
-    border-left: 1px solid var(--border-silver);
-    z-index: 1100;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    transform: translateX(100%);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -20px 0 60px rgba(0,0,0,0.9);
-}
-
-.sidebar.open {
-    transform: translateX(0);
-}
-
-.sidebar-header {
+.side-menu-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.sidebar-title {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    color: #fff;
-    text-shadow: 0 0 15px rgba(255,255,255,0.5);
-}
-
-.sidebar-close-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #aaa;
+.side-menu-header {
     font-size: 18px;
-    transition: 0.3s;
-}
-
-.sidebar-close-btn:hover {
-    color: #fff;
-    border-color: #fff;
-    background: rgba(255,255,255,0.15);
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sidebar-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 14px 16px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: var(--text-silver);
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.sidebar-item:hover, .sidebar-item.active {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    transform: translateX(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
-}
-
-.sidebar-icon-wrapper {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-}
-
-.sidebar-icon-svg {
-    width: 22px;
-    height: 22px;
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-}
-
-.app-container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 680px;
-    margin-top: 20px;
-}
-
-.page-view {
-    display: none;
-    animation: fadeIn 0.4s ease forwards;
-}
-
-.page-view.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.home-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.main-logo-text {
-    font-size: 48px;
     font-weight: 900;
-    letter-spacing: 4px;
-    color: #ffffff;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.3);
 }
 
-.mrx-cards-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    width: 100%;
-}
-
-.mrx-portal-btn {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    background: #000000;
-    border: 2px solid rgba(255, 255, 255, 0.85);
-    border-radius: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 25px;
+.side-menu-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.2);
     cursor: pointer;
-    overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.9), inset 0 0 25px rgba(255,255,255,0.08);
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
 }
 
-.mrx-portal-btn::before {
+.side-menu-close::before,
+.side-menu-close::after {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: 26px;
-    box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.3);
-    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: rgba(255,255,255,.7);
 }
 
-.mrx-portal-btn:hover {
-    transform: translateY(-4px) scale(1.015);
-    border-color: #ffffff;
-    box-shadow: 0 20px 55px rgba(255,255,255,0.25), inset 0 0 35px rgba(255,255,255,0.2);
+.side-menu-close::before {
+    transform: translate(-50%,-50%) rotate(45deg);
 }
 
-.mrx-portal-btn:active {
-    transform: scale(0.98);
+.side-menu-close::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
 }
 
-.icon-frame {
-    width: 65px;
-    height: 65px;
-    border-radius: 18px;
-    border: 2px solid rgba(255, 255, 255, 0.8);
+.menu-section {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
-    margin-left: 20px;
-    flex-shrink: 0;
-}
-
-.portal-icon-svg {
-    width: 34px;
-    height: 34px;
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
-}
-
-.portal-label-text {
-    font-size: 24px;
-    font-weight: 800;
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.5px;
-}
-
-.subpage-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    padding: 10px 0;
-}
-
-.back-nav-btn {
-    display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     gap: 8px;
-    padding: 10px 20px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-silver);
-    color: #ffffff;
-    font-size: 14px;
+}
+
+.menu-section-label {
+    font-size: 11px;
     font-weight: 700;
+    color: rgba(255,255,255,.3);
+    letter-spacing: 1px;
+    padding: 0 4px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
-    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: .3s;
 }
 
-.back-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+.menu-btn:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.3);
 }
 
-.section-headline {
+.menu-btn.active {
+    background: rgba(255,255,255,.09);
+    border-color: rgba(255,255,255,.4);
+}
+
+/* المحتوى */
+.main-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 10px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 35px;
+    text-shadow: 0 0 15px rgba(255,255,255,.3);
+}
+
+.cards-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(5,5,5,.85);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 24px;
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+    max-width: 550px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .4s;
+}
+
+.card:hover {
+    border-color: rgba(255,255,255,.4);
+    box-shadow: 0 0 30px rgba(255,255,255,.15);
+}
+
+.app-img {
+    width: 100%;
+    aspect-ratio: 16/11;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.name {
     font-size: 26px;
     font-weight: 900;
-    color: #ffffff;
-    text-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-.hacks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
-    width: 100%;
-}
-
-.hack-card-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border-silver);
-    border-radius: 24px;
-    padding: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.35s ease;
-}
-
-.hack-card-box:hover {
-    border-color: rgba(255,255,255,0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.12);
-}
-
-.hack-card-img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: #000;
-}
-
-.hack-card-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 16px;
-    text-align: center;
-    text-shadow: 0 0 12px rgba(255,255,255,0.3);
-}
-
-.downloads-stack {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.dl-action-btn {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 14px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+.version {
     font-size: 14px;
+    color: rgba(255,255,255,.5);
+}
+
+/* أزرار التثبيت */
+.download-btn {
+    width: 100%;
+    padding: 14px;
+    background: rgba(5,5,5,.7);
+    color: #fff;
     font-weight: 700;
+    font-size: 15px;
+    border-radius: 12px;
+    margin-top: 18px;
+    border: 1px solid rgba(255,255,255,.2);
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.4);
+}
+
+/* الروابط السفلية */
+.links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.link-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(5,5,5,.8);
 }
 
-.dl-action-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+.link-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(255,255,255,.6);
 }
 
-.footer-credits {
-    margin-top: 50px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-dark);
-    letter-spacing: 1px;
+@media (min-width:768px) {
+    body { align-items: center; }
+
+    .cards-grid {
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        flex: 1;
+    }
+}
+
+@media (min-width:1024px) {
+    .cards-grid {
+        gap: 50px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg-grid"></div>
-<div class="bg-glow-orb"></div>
+<div class="grid-bg"></div>
+<div class="floating-icons-layer" id="floatingIconsLayer"></div>
 
-<div class="menu-toggle-btn" onclick="openSidebar()">
-    <div class="hamburger-lines">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+<!-- زر القائمة -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
 </div>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<div class="side-menu-overlay" onclick="closeMenu()"></div>
 
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <div class="sidebar-title">MRX HUB</div>
-        <div class="sidebar-close-btn" onclick="closeSidebar()">✕</div>
+<!-- القائمة الجانبية -->
+<div class="side-menu" id="side-menu">
+
+    <div class="side-menu-top">
+        <div class="side-menu-header">القائمة</div>
+        <div class="side-menu-close" onclick="closeMenu()"></div>
     </div>
-    
-    <div class="sidebar-nav">
-        <div class="sidebar-item active" onclick="navigateTo('page-home')">
-            <div class="sidebar-icon-wrapper">
-                <svg class="sidebar-icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            </div>
-            <span>الرئيسية</span>
-        </div>
 
-        <div class="sidebar-item" onclick="navigateTo('page-ios')">
-            <div class="sidebar-icon-wrapper">
-                <svg class="sidebar-icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            </div>
-            <span>هاكات ايفون (iOS)</span>
-        </div>
+    <div class="menu-section">
 
-        <div class="sidebar-item" onclick="navigateTo('page-android')">
-            <div class="sidebar-icon-wrapper">
-                <svg class="sidebar-icon-svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line></svg>
-            </div>
-            <span>هاكات أندرويد (Android)</span>
-        </div>
+        <span class="menu-section-label">الهاكات</span>
 
-        <div class="sidebar-item" onclick="navigateTo('page-pc')">
-            <div class="sidebar-icon-wrapper">
-                <svg class="sidebar-icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <span>هاكات بي سي (PC)</span>
-        </div>
+        <button class="menu-btn active" onclick="showPage('android', this)">
+            Android
+        </button>
+
+        <button class="menu-btn" onclick="showPage('ios', this)">
+            iPhone
+        </button>
+
+        <button class="menu-btn" onclick="showPage('pc', this)">
+            PC
+        </button>
+
     </div>
+
+    <div class="menu-section">
+
+        <span class="menu-section-label">روابط</span>
+
+        <a href="https://discord.gg/exaSkee62g"
+           target="_blank"
+           class="menu-btn">
+            Discord
+        </a>
+
+        <a href="https://github.com/Majeedl12"
+           target="_blank"
+           class="menu-btn">
+            GitHub
+        </a>
+
+        <a href="https://www.youtube.com/@axis_executor"
+           target="_blank"
+           class="menu-btn">
+            YouTube
+        </a>
+
+    </div>
+
 </div>
 
-<div class="app-container">
+<div class="main-container">
 
-    <div id="page-home" class="page-view active">
-        <div class="home-header">
-            <div class="main-logo-text">MRX</div>
+    <!-- Android -->
+    <div id="android-page">
+
+        <div class="section-title">
+            هاكات - Android
         </div>
 
-        <div class="mrx-cards-wrapper">
-            <div class="mrx-portal-btn" onclick="navigateTo('page-ios')">
-                <div class="icon-frame">
-                    <svg class="portal-icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-                </div>
-                <div class="portal-label-text">هاكات ايفون + iOS</div>
+        <div class="cards-grid">
+
+            <!-- Delta -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png"
+                    alt="Delta">
+
+                <div class="name">Delta</div>
+                <div class="version">Android</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://files.catbox.moe/6kqc4y.apk">
+                    Install Delta
+                </a>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/5pvz0fjuaudojmd/Delta+VN+New.apk/file">
+                    Install Delta VN
+                </a>
             </div>
 
-            <div class="mrx-portal-btn" onclick="navigateTo('page-android')">
-                <div class="icon-frame">
-                    <svg class="portal-icon-svg" viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7z"></path><line x1="9" y1="3" x2="7" y2="6"></line><line x1="15" y1="3" x2="17" y2="6"></line></svg>
-                </div>
-                <div class="portal-label-text">هاكات أندرويد + Android</div>
+            <!-- Arceus -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2577.jpeg"
+                    alt="Arceus X">
+
+                <div class="name">Arceus X</div>
+                <div class="version">Android</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/dlypi7n7b8azy74/Roblox.Arceus.X.NEO.2.2.7.apk.download/file">
+                    Install Arceus Neo
+                </a>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://vng.spdmteam.com/">
+                    Install Arceus VN
+                </a>
             </div>
 
-            <div class="mrx-portal-btn" onclick="navigateTo('page-pc')">
-                <div class="icon-frame">
-                    <svg class="portal-icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-                <div class="portal-label-text">هاكات بي سي + PC</div>
-            </div>
-        </div>
-    </div>
+            <!-- PunkX -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2609.jpeg"
+                    alt="PunkX">
 
-    <div id="page-ios" class="page-view">
-        <div class="subpage-header">
-            <button class="back-nav-btn" onclick="navigateTo('page-home')">→ رجوع للرئيسية</button>
-            <div class="section-headline">قائمة الايفون (iOS)</div>
-        </div>
+                <div class="name">PunkX</div>
+                <div class="version">Android</div>
 
-        <div class="hacks-grid">
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="hack-card-img" alt="Delta iOS">
-                <div class="hack-card-title">Delta iOS</div>
-                <div class="downloads-stack">
-                    <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="dl-action-btn" target="_blank">
-                        <span>Install Delta Direct</span>
-                    </a>
-                    <a href="https://nekoo.eu.org/mnzdiQ" class="dl-action-btn" target="_blank">
-                        <span>Install Delta VN</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/4cz0juuzjfyqqm4/PunkX_64Bits.apk/file">
+                    Install PunkX Original
+                </a>
 
-    <div id="page-android" class="page-view">
-        <div class="subpage-header">
-            <button class="back-nav-btn" onclick="navigateTo('page-home')">→ رجوع للرئيسية</button>
-            <div class="section-headline">قائمة الاندرويد (Android)</div>
-        </div>
-
-        <div class="hacks-grid">
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png" class="hack-card-img" alt="Delta">
-                <div class="hack-card-title">Delta</div>
-                <div class="downloads-stack">
-                    <a href="https://files.catbox.moe/6kqc4y.apk" class="dl-action-btn" target="_blank">
-                        <span>Install Delta Global</span>
-                    </a>
-                    <a href="https://www.mediafire.com/file/5pvz0fjuaudojmd/Delta+VN+New.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install Delta VN</span>
-                    </a>
-                </div>
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/tafzvqylpjzp4go/PunkX_VNG_64Bits.apk/file">
+                    Install PunkX VNG
+                </a>
             </div>
 
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2577.jpeg" class="hack-card-img" alt="Arceus X">
-                <div class="hack-card-title">Arceus X</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/dlypi7n7b8azy74/Roblox.Arceus.X.NEO.2.2.7.apk.download/file" class="dl-action-btn" target="_blank">
-                        <span>Install Arceus Neo</span>
-                    </a>
-                    <a href="https://vng.spdmteam.com/" class="dl-action-btn" target="_blank">
-                        <span>Install Arceus VN</span>
-                    </a>
-                </div>
+            <!-- Codex -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2580.jpeg"
+                    alt="Codex">
+
+                <div class="name">Codex</div>
+                <div class="version">Android</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/9qz50mqeizkgkww/Codex+v2.729.840.apk/file">
+                    Install Codex Global
+                </a>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/5p08n8qhtsv4x3s/Codex+VNG+V2.715+No+Key.apk/file">
+                    Install Codex VN
+                </a>
             </div>
 
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2609.jpeg" class="hack-card-img" alt="PunkX">
-                <div class="hack-card-title">PunkX</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/4cz0juuzjfyqqm4/PunkX_64Bits.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install PunkX Original</span>
-                    </a>
-                    <a href="https://www.mediafire.com/file/tafzvqylpjzp4go/PunkX_VNG_64Bits.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install PunkX VNG</span>
-                    </a>
-                </div>
+            <!-- VegaX -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://github.com/Rxz60/TRX5/raw/refs/heads/main/4865B4C0-8AD9-44E7-AEF1-93DFA9FFE555.png"
+                    alt="VegaX">
+
+                <div class="name">VegaX</div>
+                <div class="version">Android</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://github.com/1f0yt/community/releases/download/Vegax/Vega.X.apk">
+                    Install VegaX
+                </a>
             </div>
 
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2580.jpeg" class="hack-card-img" alt="Codex">
-                <div class="hack-card-title">Codex</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/9qz50mqeizkgkww/Codex+v2.729.840.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install Codex Global</span>
-                    </a>
-                    <a href="https://www.mediafire.com/file/5p08n8qhtsv4x3s/Codex+VNG+V2.715+No+Key.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install Codex VN</span>
-                    </a>
-                </div>
+            <!-- Trigon -->
+            <div class="card">
+                <img
+                    class="app-img"
+                    src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png"
+                    alt="Trigon">
+
+                <div class="name">Trigon</div>
+                <div class="version">Android</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/1p5mhe2y2hh97z1/2.726.1142_trigon.apk/file">
+                    Install Trigon
+                </a>
             </div>
 
-            <div class="hack-card-box">
-                <img src="https://github.com/Rxz60/TRX5/raw/refs/heads/main/4865B4C0-8AD9-44E7-AEF1-93DFA9FFE555.png" class="hack-card-img" alt="VegaX">
-                <div class="hack-card-title">VegaX</div>
-                <div class="downloads-stack">
-                    <a href="https://github.com/1f0yt/community/releases/download/Vegax/Vega.X.apk" class="dl-action-btn" target="_blank">
-                        <span>Install VegaX APK</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hack-card-box">
-                <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png" class="hack-card-img" alt="Trigon">
-                <div class="hack-card-title">Trigon</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/1p5mhe2y2hh97z1/2.726.1142_trigon.apk/file" class="dl-action-btn" target="_blank">
-                        <span>Install Trigon APK</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="page-pc" class="page-view">
-        <div class="subpage-header">
-            <button class="back-nav-btn" onclick="navigateTo('page-home')">→ رجوع للرئيسية</button>
-            <div class="section-headline">قائمة البي سي (PC)</div>
-        </div>
-
-        <div class="hacks-grid">
-            <div class="hack-card-box">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2612.jpeg" class="hack-card-img" alt="Velocity">
-                <div class="hack-card-title">Velocity</div>
-                <div class="downloads-stack">
-                    <a href="https://gofile.io/d/biQGwp" class="dl-action-btn" target="_blank">
-                        <span>Install Velocity PC</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hack-card-box">
-                <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png" class="hack-card-img" alt="Trigon PC">
-                <div class="hack-card-title">Trigon</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/jwmwp9xhriyqkql/Trigon_Evo_0.2.6.exe/file" class="dl-action-btn" target="_blank">
-                        <span>Install Trigon PC EXE</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hack-card-box">
-                <img src="https://github.com/Rxz60/RFX/raw/refs/heads/main/8EDAC7FF-974A-4351-8F15-8C2592B06CF4.png" class="hack-card-img" alt="Xeno">
-                <div class="hack-card-title">Xeno</div>
-                <div class="downloads-stack">
-                    <a href="https://www.mediafire.com/file/e2kjxf028x107uk/Xeno-v1.3.55.exe/file" class="dl-action-btn" target="_blank">
-                        <span>Install Xeno EXE</span>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="footer-credits">
-        MRX PLATFORM © ALL RIGHTS RESERVED
+    <!-- iPhone -->
+    <div id="ios-page" style="display:none;">
+
+        <div class="section-title">
+            هاكات - iPhone
+        </div>
+
+        <div class="cards-grid">
+
+            <div class="card">
+
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png"
+                    alt="Delta">
+
+                <div class="name">Delta</div>
+                <div class="version">iOS</div>
+
+                <a class="download-btn"
+                   href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist">
+                    Install Delta
+                </a>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://nekoo.eu.org/mnzdiQ">
+                    Install Delta VN
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PC -->
+    <div id="pc-page" style="display:none;">
+
+        <div class="section-title">
+            هاكات - PC
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- Velocity -->
+            <div class="card">
+
+                <img
+                    class="app-img"
+                    src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2612.jpeg"
+                    alt="Velocity">
+
+                <div class="name">Velocity</div>
+                <div class="version">PC</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://gofile.io/d/biQGwp">
+                    Install Velocity
+                </a>
+
+            </div>
+
+            <!-- Trigon -->
+            <div class="card">
+
+                <img
+                    class="app-img"
+                    src="https://github.com/Rxz60/RFX/raw/refs/heads/main/A590D67D-235D-4C31-8606-59127F58FF03.png"
+                    alt="Trigon">
+
+                <div class="name">Trigon</div>
+                <div class="version">PC</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/jwmwp9xhriyqkql/Trigon_Evo_0.2.6.exe/file">
+                    Install Trigon PC
+                </a>
+
+            </div>
+
+            <!-- Xeno -->
+            <div class="card">
+
+                <img
+                    class="app-img"
+                    src="https://github.com/Rxz60/RFX/raw/refs/heads/main/8EDAC7FF-974A-4351-8F15-8C2592B06CF4.png"
+                    alt="Xeno">
+
+                <div class="name">Xeno</div>
+                <div class="version">PC</div>
+
+                <a class="download-btn"
+                   target="_blank"
+                   href="https://www.mediafire.com/file/e2kjxf028x107uk/Xeno-v1.3.55.exe/file">
+                    Install Xeno
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- الروابط -->
+    <div class="links">
+
+        <a href="https://github.com/Majeedl12"
+           target="_blank"
+           class="link-btn">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+
+        </a>
+
+        <a href="https://discord.gg/exaSkee62g"
+           target="_blank"
+           class="link-btn">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+            </svg>
+
+        </a>
+
+        <a href="https://www.youtube.com/@axis_executor"
+           target="_blank"
+           class="link-btn">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+            </svg>
+
+        </a>
+
     </div>
 
 </div>
 
 <script>
-function openSidebar() {
-    document.getElementById('sidebar').classList.add('open');
-    document.getElementById('sidebarOverlay').classList.add('active');
+
+function toggleMenu() {
+    document.getElementById('side-menu').classList.toggle('open');
+    document.querySelector('.side-menu-overlay').classList.toggle('active');
 }
 
-function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('active');
-}
-
-function navigateTo(pageId) {
-    const pages = document.querySelectorAll('.page-view');
-    pages.forEach(function(p) {
-        p.classList.remove('active');
-    });
-
-    const target = document.getElementById(pageId);
-    if (target) {
-        target.classList.add('active');
-    }
-
-    closeSidebar();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+function closeMenu() {
+    document.getElementById('side-menu').classList.remove('open');
+    document.querySelector('.side-menu-overlay').classList.remove('active');
 }
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeSidebar();
-    }
+    if (e.key === 'Escape') closeMenu();
 });
+
+/* التنقل بين Android / iPhone / PC */
+function showPage(page, button) {
+
+    document.getElementById('android-page').style.display = 'none';
+    document.getElementById('ios-page').style.display = 'none';
+    document.getElementById('pc-page').style.display = 'none';
+
+    document.getElementById(page + '-page').style.display = 'block';
+
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    if (button) {
+        button.classList.add('active');
+    }
+
+    closeMenu();
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+/* الأيقونات العائمة */
+function createFloatingIcons() {
+
+    const layer = document.getElementById('floatingIconsLayer');
+
+    if (!layer || typeof lucide === 'undefined') {
+        setTimeout(createFloatingIcons, 100);
+        return;
+    }
+
+    layer.innerHTML = '';
+
+    const icons = [
+        'code-xml',
+        'terminal',
+        'star',
+        'sparkles',
+        'crown',
+        'zap'
+    ];
+
+    icons.forEach((iconName, i) => {
+
+        const wrapper = document.createElement('div');
+
+        wrapper.className = 'floating-icon';
+
+        const size = 60 + i * 6;
+
+        wrapper.style.width = size + 'px';
+        wrapper.style.height = size + 'px';
+
+        if (i < 3) {
+            wrapper.style.left = (8 + i * 28) % 92 + '%';
+            wrapper.style.top = (4 + i * 12) % 35 + '%';
+        } else {
+            wrapper.style.left = (12 + (i - 3) * 30) % 90 + '%';
+            wrapper.style.top = (62 + (i - 3) * 10) % 88 + '%';
+        }
+
+        const iconEl = document.createElement('i');
+
+        iconEl.setAttribute(
+            'data-lucide',
+            iconName
+        );
+
+        wrapper.appendChild(iconEl);
+        layer.appendChild(wrapper);
+    });
+
+    lucide.createIcons();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    createFloatingIcons();
+});
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+
+    if (
+        e.ctrlKey &&
+        (
+            e.key === 'u' ||
+            e.key === 's' ||
+            e.key === 'p' ||
+            e.key === 'c'
+        )
+    ) {
+        e.preventDefault();
+    }
+
+});
+
 </script>
 
 </body>
